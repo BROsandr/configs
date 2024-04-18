@@ -40,15 +40,15 @@ function install {
 
   case "${METHOD}" in
     apt)
-      sudo apt-get --yes install "${PKG_NAME}" && SUCCESS=true
+      sudo apt-get --yes install "${PKG_NAME}" 1>> "${DEBUG_LOGFILE}" 2> >(tee -a "${ERROR_LOGFILE}" >&2) && SUCCESS=true
       ;;
 
     snap)
-      sudo snap install "${PKG_NAME}" && SUCCESS=true
+      sudo snap install "${PKG_NAME}" 1>> "${DEBUG_LOGFILE}" 2> >(tee -a "${ERROR_LOGFILE}" >&2) && SUCCESS=true
       ;;
 
     *)
-      format_log_msg "Unknown installation method='${METHOD}'. Package='${PKG_NAME}'." >> "${LOGFILE}"
+      format_log_msg "ERROR: Unknown installation method='${METHOD}'. Package='${PKG_NAME}'." >&2 | tee -a "${ERROR_LOGFILE}"
       ;;
   esac
 
@@ -60,29 +60,28 @@ function install {
   fi
 }
 
-(
-  sudo apt-get update
-  sudo apt-get upgrade
 
-  APT_PKGS=(
-    build-essential
-    gcc
-    clang
-    stow
-    verilator
-    pip
-    texlive-full
-  )
+sudo apt-get update 1>> "${DEBUG_LOGFILE}" 2>> "${ERROR_LOGFILE}"
+sudo apt-get upgrade 1>> "${DEBUG_LOGFILE}" 2>> "${ERROR_LOGFILE}"
 
-  SNAP_PKGS=(
-    universal-ctags
-  )
+APT_PKGS=(
+  build-essential
+  gcc
+  clang
+  stow
+  verilator
+  pip
+  texlive-full
+)
 
-  for PKG in "${APT_PKGS[@]}"; do
-    install "${PKG}" apt
-  done
+SNAP_PKGS=(
+  universal-ctags
+)
 
-  for PKG in "${SNAP_PKGS[@]}"; do
-    install "${PKG}" snap
-  done
-) 1> "${DEBUG_LOGFILE}" 2> "${ERROR_LOGFILE}"
+for PKG in "${APT_PKGS[@]}"; do
+  install "${PKG}" apt
+done
+
+for PKG in "${SNAP_PKGS[@]}"; do
+  install "${PKG}" snap
+done
