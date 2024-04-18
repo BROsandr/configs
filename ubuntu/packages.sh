@@ -38,7 +38,7 @@ function install {
 
   case "${METHOD}" in
     apt)
-      sudo apt --yes install "${PKG_NAME}" && SUCCESS=true
+      sudo apt-get --yes install "${PKG_NAME}" && SUCCESS=true
       ;;
 
     snap)
@@ -59,8 +59,8 @@ function install {
 }
 
 (
-  sudo apt update
-  sudo apt upgrade
+  sudo apt-get update
+  sudo apt-get upgrade
 
   APT_PKGS=(
     build-essential
