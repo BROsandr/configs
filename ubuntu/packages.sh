@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LOG_PATH_ROOT="${LOG_PATH_ROOT:-~/var/log}"
+LOG_PATH_ROOT="${LOG_PATH_ROOT:-"${HOME}"/var/log}"
 LOG_PATH_THIS=$LOG_PATH_ROOT/packages
 
 DEBUG_LOGFILE=${LOG_PATH_THIS}/debug.log
