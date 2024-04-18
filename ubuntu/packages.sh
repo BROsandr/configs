@@ -70,18 +70,18 @@ APT_PKGS=(
   clang
   stow
   verilator
+  python3
   pip
   texlive-full
+  universal-ctags
+  meson
+  cmake
+  git
 )
 
 SNAP_PKGS=(
-  universal-ctags
 )
 
 for PKG in "${APT_PKGS[@]}"; do
   install "${PKG}" apt
-done
-
-for PKG in "${SNAP_PKGS[@]}"; do
-  install "${PKG}" snap
 done
