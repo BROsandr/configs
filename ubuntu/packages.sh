@@ -12,9 +12,26 @@ ERROR_LOGFILE=${LOG_PATH_THIS}/error.log
 echo > "${ERROR_LOGFILE}"
 
 function format_log_msg() {
-  local msg="${1}"
+  local SEVERITY="${1:-debug}"
+  local MSG=$(cat)
 
-  echo "$(date) '${msg}'"
+  case "${SEVERITY}" in
+    info)
+      ;;
+
+    debug)
+      ;;
+
+    error)
+      ;;
+
+    *)
+      echo "Unsupported SEVERITY='${SEVERITY}'. MSG='${MSG}'." | format_log_msg error >&2 | tee -a "${ERROR_LOGFILE}"
+      return 1
+      ;;
+  esac
+
+  echo "$(date) | ${SEVERITY} | ${MSG}"
 }
 
 function log_installation {
@@ -24,9 +41,9 @@ function log_installation {
 
   local LOG_MSG=""
   if [ "${SUCCESS}" = true ] ; then
-    LOG_MSG=$(format_log_msg "Package='${PKG}' was successfully installed.")
+    LOG_MSG=$(echo "Package='${PKG}' was successfully installed." | format_log_msg info)
   else
-    LOG_MSG=$(format_log_msg "Package='${PKG}' was not installed.")
+    LOG_MSG=$(echo "Package='${PKG}' was not installed." | format_log_msg info)
   fi
   echo "${LOG_MSG}" | tee -a "${LOG_PATH}"
 }
@@ -48,7 +65,7 @@ function install {
       ;;
 
     *)
-      format_log_msg "ERROR: Unknown installation method='${METHOD}'. Package='${PKG_NAME}'." >&2 | tee -a "${ERROR_LOGFILE}"
+      echo "Unknown installation method='${METHOD}'. Package='${PKG_NAME}'." | format_log_msg error >&2 | tee -a "${ERROR_LOGFILE}"
       ;;
   esac
 
