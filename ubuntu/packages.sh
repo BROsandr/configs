@@ -22,11 +22,13 @@ function log_installation {
   local SUCCESS="${2}"
   local LOG_PATH="${3}"
 
+  local LOG_MSG=""
   if [ "${SUCCESS}" = true ] ; then
-    format_log_msg "Package='${PKG}' was successfully installed." >> "${LOG_PATH}"
+    LOG_MSG=$(format_log_msg "Package='${PKG}' was successfully installed.")
   else
-    format_log_msg "Package='${PKG}' was not installed." >> "${LOG_PATH}"
+    LOG_MSG=$(format_log_msg "Package='${PKG}' was not installed.")
   fi
+  echo "${LOG_MSG}" | tee -a "${LOG_PATH}"
 }
 
 function install {
