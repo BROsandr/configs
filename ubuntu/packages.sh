@@ -34,33 +34,6 @@ function format_log_msg() {
   echo "$(date) | ${SEVERITY} | ${MSG}"
 }
 
-function log_cmd {
-  local CMD="${1}"
-  local SEVERITY="${2:-debug}"
-
-  local LOGFILE=""
-  case "${SEVERITY}" in
-    info)
-      LOGFILE="${INFO_LOGFILE}"
-      ;;
-
-    debug)
-      LOGFILE="${DEBUG_LOGFILE}"
-      ;;
-
-    error)
-      LOGFILE="${ERROR_LOGFILE}"
-      ;;
-
-    *)
-      echo "Unsupported SEVERITY='${SEVERITY}'. CMD='${CMD}'." | format_log_msg error >&2 | tee -a "${ERROR_LOGFILE}"
-      return 1
-      ;;
-  esac
-
-  $(CMD) 1> >(format_log_msg "${SEVERITY}" >> "${LOGFILE}") 2> >(format_log_msg error | tee -a "${ERROR_LOGFILE}" >&2)
-}
-
 function log_installation {
   local PKG="${1}"
   local SUCCESS="${2}"
@@ -84,11 +57,11 @@ function install {
 
   case "${METHOD}" in
     apt)
-      log_cmd "sudo apt-get --yes install ${PKG_NAME}" debug && SUCCESS=true
+      sudo apt-get --yes install "${PKG_NAME}" 1>> "${DEBUG_LOGFILE}" 2> >(tee -a "${ERROR_LOGFILE}" >&2) && SUCCESS=true
       ;;
 
     snap)
-      log_cmd "sudo snap install ${PKG_NAME}" debug && SUCCESS=true
+      sudo snap install "${PKG_NAME}" 1>> "${DEBUG_LOGFILE}" 2> >(tee -a "${ERROR_LOGFILE}" >&2) && SUCCESS=true
       ;;
 
     *)
