@@ -5,11 +5,11 @@ LOG_PATH_THIS=$LOG_PATH_ROOT/packages
 mkdir -p "${LOG_PATH_THIS}"
 
 DEBUG_LOGFILE=${LOG_PATH_THIS}/debug.log
-echo > "${DEBUG_LOGFILE}"
+> "${DEBUG_LOGFILE}"
 INFO_LOGFILE=${LOG_PATH_THIS}/info.log
-echo > "${INFO_LOGFILE}"
+> "${INFO_LOGFILE}"
 ERROR_LOGFILE=${LOG_PATH_THIS}/error.log
-echo > "${ERROR_LOGFILE}"
+> "${ERROR_LOGFILE}"
 
 function format_log_msg() {
   local SEVERITY="${1:-debug}"
