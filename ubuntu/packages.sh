@@ -96,6 +96,7 @@ function install {
     meson
     cmake
     git
+    inkscape
   )
 
   SNAP_PKGS=(
