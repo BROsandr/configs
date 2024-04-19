@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 LOG_PATH_ROOT="${LOG_PATH_ROOT:-"${HOME}"/var/log}"
-LOG_PATH_THIS=$LOG_PATH_ROOT/packages
+LOG_PATH_THIS="${LOG_PATH_ROOT}"/packages
 mkdir -p "${LOG_PATH_THIS}"
 
-DEBUG_LOGFILE=${LOG_PATH_THIS}/debug.log
+DEBUG_LOGFILE=${LOG_PATH_THIS}/all.log
 > "${DEBUG_LOGFILE}"
-INFO_LOGFILE=${LOG_PATH_THIS}/info.log
+INFO_LOGFILE="${DEBUG_LOGFILE}"
 > "${INFO_LOGFILE}"
-ERROR_LOGFILE=${LOG_PATH_THIS}/error.log
+ERROR_LOGFILE="${DEBUG_LOGFILE}"
 > "${ERROR_LOGFILE}"
 
 function format_log_msg() {
