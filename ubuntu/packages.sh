@@ -31,6 +31,7 @@ function format_log_msg() {
       ;;
   esac
 
+  echo "---"
   echo "$(date) | ${SEVERITY} | ${MSG}"
 }
 
