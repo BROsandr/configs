@@ -26,7 +26,7 @@ function format_log_msg() {
       ;;
 
     *)
-      echo "Unsupported SEVERITY='${SEVERITY}'. MSG='${MSG}'." | format_log_msg error >&2 | tee -a "${ERROR_LOGFILE}"
+      echo "Unsupported SEVERITY='${SEVERITY}'. MSG='${MSG}'." | format_log_msg error >&2
       return 1
       ;;
   esac
@@ -46,7 +46,7 @@ function log_installation {
   else
     LOG_MSG=$(echo "Package='${PKG}' was not installed." | format_log_msg info)
   fi
-  echo "${LOG_MSG}" | tee -a "${LOG_PATH}"
+  echo "${LOG_MSG}" >&3
 }
 
 function install {
@@ -58,15 +58,15 @@ function install {
 
   case "${METHOD}" in
     apt)
-      sudo apt-get --yes install "${PKG_NAME}" 1>> "${DEBUG_LOGFILE}" 2> >(tee -a "${ERROR_LOGFILE}" >&2) && SUCCESS=true
+      sudo apt-get --yes install "${PKG_NAME}" | format_log_msg debug && SUCCESS=true
       ;;
 
     snap)
-      sudo snap install "${PKG_NAME}" 1>> "${DEBUG_LOGFILE}" 2> >(tee -a "${ERROR_LOGFILE}" >&2) && SUCCESS=true
+      sudo snap install "${PKG_NAME}" | format_log_msg debug && SUCCESS=true
       ;;
 
     *)
-      echo "Unknown installation method='${METHOD}'. Package='${PKG_NAME}'." | format_log_msg error >&2 | tee -a "${ERROR_LOGFILE}"
+      echo "Unknown installation method='${METHOD}'. Package='${PKG_NAME}'." | format_log_msg error >&2
       ;;
   esac
 
@@ -78,28 +78,29 @@ function install {
   fi
 }
 
+(
+  sudo apt-get --yes update | format_log_msg debug
+  sudo apt-get --yes upgrade | format_log_msg debug
 
-sudo apt-get update 1>> "${DEBUG_LOGFILE}" 2>> "${ERROR_LOGFILE}"
-sudo apt-get upgrade 1>> "${DEBUG_LOGFILE}" 2>> "${ERROR_LOGFILE}"
+  APT_PKGS=(
+    build-essential
+    gcc
+    clang
+    stow
+    verilator
+    python3
+    pip
+    texlive-full
+    universal-ctags
+    meson
+    cmake
+    git
+  )
 
-APT_PKGS=(
-  build-essential
-  gcc
-  clang
-  stow
-  verilator
-  python3
-  pip
-  texlive-full
-  universal-ctags
-  meson
-  cmake
-  git
-)
+  SNAP_PKGS=(
+  )
 
-SNAP_PKGS=(
-)
-
-for PKG in "${APT_PKGS[@]}"; do
-  install "${PKG}" apt
-done
+  for PKG in "${APT_PKGS[@]}"; do
+    install "${PKG}" apt
+  done
+) 1>> "${DEBUG_LOGFILE}" 3> >(tee -a "${INFO_LOGFILE}" >&1) 2> >(tee -a "${ERROR_LOGFILE}" >&2)
