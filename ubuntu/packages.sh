@@ -33,6 +33,7 @@ function format_log_msg() {
 
   echo "---"
   echo "$(date) | ${SEVERITY} | ${MSG}"
+  echo "---"
 }
 
 function log_installation {
