@@ -5,6 +5,8 @@ HM_DIR="${HM_DIR:-"${HOME}/.config/home-manager"}"
 ORIG_FILES=(
   'apps/__all__.nix'
   'apps/git.nix'
+  'apps/direnv.nix'
+
   '__packages__.nix'
 )
 
