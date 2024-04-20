@@ -10,7 +10,9 @@ ORIG_FILES=(
 
 mkdir -p "${HM_DIR}/apps"
 
+THIS_DIR=$(dirname "${0}")
+
 for FILE in "${ORIG_FILES[@]}"; do
-  FILE_ABS=$(realpath "${FILE}")
+  FILE_ABS="${THIS_DIR}/${FILE}"
   ln "${FILE_ABS}" "${HM_DIR}/${FILE}"
 done
