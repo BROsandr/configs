@@ -1,5 +1,6 @@
 {pkgs, ...} : {
-  home.packages = [
-    pkgs.wget
+  home.packages = with pkgs; [
+    wget
+    tree
   ];
 }
