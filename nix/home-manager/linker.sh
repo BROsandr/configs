@@ -10,6 +10,7 @@ ORIG_FILES=(
   'apps/micro.nix'
   'apps/bat.nix'
   'apps/nnn.nix'
+  'apps/xdg.nix'
   'apps/micro/keybindings.json'
 
   '__packages__.nix'
