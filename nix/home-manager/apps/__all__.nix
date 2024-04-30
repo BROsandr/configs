@@ -6,5 +6,6 @@
     ./fish.nix
     ./micro.nix
     ./bat.nix
+    ./nnn.nix
   ];
 }

@@ -9,6 +9,7 @@ ORIG_FILES=(
   'apps/bash.nix'
   'apps/micro.nix'
   'apps/bat.nix'
+  'apps/nnn.nix'
   'apps/micro/keybindings.json'
 
   '__packages__.nix'
