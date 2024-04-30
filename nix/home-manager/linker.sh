@@ -9,11 +9,13 @@ ORIG_FILES=(
   'apps/bash.nix'
   'apps/micro.nix'
   'apps/bat.nix'
+  'apps/micro/keybindings.json'
 
   '__packages__.nix'
 )
 
 mkdir -p "${HM_DIR}/apps"
+mkdir -p "${HM_DIR}/apps/micro"
 
 THIS_DIR=$(dirname "${0}")
 

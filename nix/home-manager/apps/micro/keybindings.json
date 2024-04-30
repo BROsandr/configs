@@ -1,0 +1,21 @@
+{
+  // Default bindings
+  "Alt-/": "lua:comment.comment",
+  "CtrlUnderscore": "lua:comment.comment",
+  //
+
+  // "Tab": "Autocomplete|InsertTab",
+  // "Backtab": "OutdentLine",
+  // "Ctrl-[": "IndentSelection",
+  // "Ctrl-]": "OutdentSelection",
+
+  "AltShiftDown": "DuplicateLine",
+
+  "Ctrl-d": "SpawnMultiCursor",
+  "CtrlAltUp":   "SpawnMultiCursorUp",
+  "CtrlAltDown": "SpawnMultiCursorDown",
+  "Alt-m":        "SpawnMultiCursorSelect",
+  "Ctrl-u":        "RemoveMultiCursor",
+  "Alt-c":        "RemoveAllMultiCursors",
+  "Alt-d":        "SkipMultiCursor",
+}
