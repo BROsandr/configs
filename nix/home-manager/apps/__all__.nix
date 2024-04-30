@@ -5,5 +5,6 @@
     ./bash.nix
     ./fish.nix
     ./micro.nix
+    ./bat.nix
   ];
 }

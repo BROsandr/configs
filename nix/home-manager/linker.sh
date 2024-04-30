@@ -8,6 +8,7 @@ ORIG_FILES=(
   'apps/direnv.nix'
   'apps/bash.nix'
   'apps/micro.nix'
+  'apps/bat.nix'
 
   '__packages__.nix'
 )
