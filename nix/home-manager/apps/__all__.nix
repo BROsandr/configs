@@ -8,5 +8,6 @@
     ./bat.nix
     ./xdg.nix
     ./nnn.nix
+    ./walk.nix
   ];
 }
