@@ -7,6 +7,7 @@ ORIG_FILES=(
   'apps/git.nix'
   'apps/direnv.nix'
   'apps/bash.nix'
+  'apps/micro.nix'
 
   '__packages__.nix'
 )
