@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.fish = {
+  programs.fish = rec {
     enable = true;
     plugins = [
       # oh-my-fish plugins are stored in their own repositories, which
@@ -18,5 +18,7 @@
     shellInitLast = ''
       set fish_command_timer_time_format '%b %d %H:%M'
     '';
+
+    shellAliases.nix-shell = "nix-shell --run fish";
   };
 }
