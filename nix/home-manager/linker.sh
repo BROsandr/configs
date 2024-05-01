@@ -13,6 +13,7 @@ ORIG_FILES=(
   'apps/xdg.nix'
   'apps/micro/keybindings.json'
   'apps/walk.nix'
+  'apps/fish.nix'
 
   '__packages__.nix'
 )
