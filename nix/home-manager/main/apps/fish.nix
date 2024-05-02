@@ -6,6 +6,15 @@
       # oh-my-fish plugins are stored in their own repositories, which
       # makes them simple to import into home-manager.
       {
+        name = "powerline-theme";
+        src = pkgs.fetchFromGitHub {
+          owner = "oh-my-fish";
+          repo = "theme-bobthefish";
+          rev = "0c15ff1cbc4bfa026c882e01dd5ceec327f26033";
+          hash = "sha256-qSVx0JpXwz28D1YUtc3ujZ16rt+dLbbQ70/2J2wU5bs=";
+        };
+      }
+      {
         name = "timer";
         src = pkgs.fetchFromGitHub {
           owner = "jichu4n";
