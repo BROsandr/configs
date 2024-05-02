@@ -14,18 +14,21 @@
           hash = "sha256-qSVx0JpXwz28D1YUtc3ujZ16rt+dLbbQ70/2J2wU5bs=";
         };
       }
-      {
-        name = "timer";
-        src = pkgs.fetchFromGitHub {
-          owner = "jichu4n";
-          repo = "fish-command-timer";
-          rev = "ba68bd0a1d06ea99aadefe5a4f32ff512783d432";
-          hash = "sha256-Ip677gZlcO8L/xukD7Qoa+C+EcI2kGd+BSOi2CDOzM4=";
-        };
-      }
+      # Superseded by "powerline-theme"
+      # {
+      #   name = "timer";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "jichu4n";
+      #     repo = "fish-command-timer";
+      #     rev = "ba68bd0a1d06ea99aadefe5a4f32ff512783d432";
+      #     hash = "sha256-Ip677gZlcO8L/xukD7Qoa+C+EcI2kGd+BSOi2CDOzM4=";
+      #   };
+      # }
     ];
     shellInitLast = ''
       set fish_command_timer_time_format '%b %d %H:%M'
+      set -g fish_prompt_pwd_dir_length 0
+      set -g theme_date_format +'%b %d %H:%M'
     '';
 
     shellAliases.nix-shell = "nix-shell --run fish";
