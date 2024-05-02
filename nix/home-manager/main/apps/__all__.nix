@@ -19,5 +19,5 @@
     ./walk.nix
     ./tree.nix
   ] ++ (if builtins.pathExists /etc/NIXOS then nixos_imports else [])
-  ++ (if builtins.match ".*wsl.*" (lib.strings.toLower (builtins.readFile /proc/version)) then non_wsl_imports else []);
+  ++ (if !(builtins.match ".*wsl.*" (lib.strings.toLower (builtins.readFile /proc/version))) then non_wsl_imports else []);
 }
