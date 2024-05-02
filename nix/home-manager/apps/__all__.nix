@@ -9,5 +9,6 @@
     ./xdg.nix
     ./nnn.nix
     ./walk.nix
+    ./tree.nix
   ];
 }
