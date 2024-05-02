@@ -14,24 +14,29 @@ function get_hm_PATH
 end
 
 function mkdirs
-  for el_PATH in $this_dir/**/*
+  mkdir -p main
+  for el_PATH in $this_dir/main/**/*
     if test -d $el_PATH
       mkdir -p (get_hm_PATH "$el_PATH")
     end
   end
 end
 
+function clean
+  rm -rf main
+end
+
 set total_linked 0
 
 function link_files
-  for el_PATH in $this_dir/**/*
-    if begin; not test -d $el_PATH; end && begin; test $el_PATH != (status --current-filename); end
+  for el_PATH in $this_dir/main/**/*
+    if not test -d $el_PATH
       ln -f "$el_PATH" "$(get_hm_PATH $el_PATH)"
       set total_linked (math $total_linked + 1)
     end
   end
 end
 
-cd $HM_DIR && mkdirs && link_files
+cd $HM_DIR && clean && mkdirs && link_files
 
 echo "total linked files = $total_linked"
