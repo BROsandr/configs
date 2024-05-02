@@ -1,7 +1,7 @@
 {
   programs.bash = {
     enable = true;
-    profileExtra = "fish";
+    profileExtra = "exec fish";
   };
 
   programs.direnv.enableBashIntegration = true;
