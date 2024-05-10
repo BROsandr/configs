@@ -3,6 +3,9 @@ let
   wordEnv = pkgs.buildEnv {
     paths = with pkgs; [
       python3Packages.docx2txt
+      antiword
+      catdoc
+      catdocx
     ];
     name = "wordEnv";
   };
