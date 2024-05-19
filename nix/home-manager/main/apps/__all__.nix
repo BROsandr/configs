@@ -23,6 +23,7 @@ in
     ./nnn.nix
     ./walk.nix
     ./tree.nix
+    ./speedtest-cli.nix
   ] ++ (if builtins.pathExists /etc/NIXOS then nixos_imports else [])
   ++ (if !helper.system.is_wsl then non_wsl_imports else []);
 }
