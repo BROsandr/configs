@@ -13,5 +13,6 @@ in {
   home.packages = with pkgs; [
     wget
     wordEnv
+    speedtest-cli
   ];
 }
