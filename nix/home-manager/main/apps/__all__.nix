@@ -1,6 +1,7 @@
 { lib, ... }:
 let
   nixos_imports = [
+    ./firefox.nix
   ];
 
   non_wsl_imports = [
