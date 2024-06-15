@@ -7,6 +7,7 @@ let
   non_wsl_imports = [
     ./vscode.nix
     ./wondershaper.nix
+    ./fonts.nix
   ];
 
   helper = import ./.__helper__.nix;
