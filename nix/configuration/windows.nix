@@ -7,6 +7,12 @@
     displayManager.lightdm = {
       enable = true;
     };
+
+    xkb = {
+      layout = "us,ru";
+      # variant = "workman,";
+      options = "grp:win_space_toggle";
+    };
   };
 
   services.displayManager = {
