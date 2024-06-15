@@ -8,6 +8,7 @@ let
     ./vscode.nix
     ./wondershaper.nix
     ./fonts.nix
+    ./alacritty.nix
   ];
 
   helper = import ./.__helper__.nix;
