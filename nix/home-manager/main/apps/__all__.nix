@@ -2,6 +2,7 @@
 let
   nixos_imports = [
     ./firefox.nix
+    ./i3.nix
   ];
 
   non_wsl_imports = [
