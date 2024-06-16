@@ -1,4 +1,4 @@
 {
-  networking.hostName = "vbox_nixos_alex";
+  networking.hostName = "nixalex";
   time.timeZone = "Europe/Moscow";
 }
