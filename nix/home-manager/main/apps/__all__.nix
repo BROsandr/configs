@@ -3,11 +3,11 @@ let
   nixos_imports = [
     ./firefox.nix
     ./i3.nix
+    ./vscode-server.nix
   ];
 
   non_wsl_imports = [
     ./vscode.nix
-    ./vscode-server.nix
     ./wondershaper.nix
     ./fonts.nix
     ./alacritty.nix
