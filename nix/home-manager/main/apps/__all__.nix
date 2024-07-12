@@ -7,6 +7,7 @@ let
 
   non_wsl_imports = [
     ./vscode.nix
+    ./vscode-server.nix
     ./wondershaper.nix
     ./fonts.nix
     ./alacritty.nix
