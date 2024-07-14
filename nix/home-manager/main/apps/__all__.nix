@@ -4,10 +4,10 @@ let
     ./firefox.nix
     ./i3.nix
     ./vscode-server.nix
+    ./vscode.nix
   ];
 
   non_wsl_imports = [
-    ./vscode.nix
     ./wondershaper.nix
     ./fonts.nix
     ./alacritty.nix
