@@ -5,12 +5,12 @@ let
     ./i3.nix
     ./vscode-server.nix
     ./vscode.nix
+    ./alacritty.nix
   ];
 
   non_wsl_imports = [
     ./wondershaper.nix
     ./fonts.nix
-    ./alacritty.nix
   ];
 
   helper = import ./.__helper__.nix;
