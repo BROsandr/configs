@@ -2,10 +2,12 @@
 let
   nixos_imports = [
     ./firefox.nix
-    ./i3.nix
     ./vscode-server.nix
     ./vscode.nix
     ./alacritty.nix
+    ./waybar.nix
+    ./hyprland.nix
+    ./__nixos_pkgs__.nix
   ];
 
   non_wsl_imports = [
