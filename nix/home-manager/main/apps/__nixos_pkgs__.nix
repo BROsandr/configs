@@ -3,6 +3,7 @@
     gimp
     bibata-cursors
     google-chrome
+
     telegram-desktop
   ];
 }
