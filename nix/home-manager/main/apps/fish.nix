@@ -32,5 +32,6 @@
     '';
 
     shellAliases.nix-shell = "nix-shell --run fish";
+    shellAbbrs.suspend = "systemctl suspend";
   };
 }
