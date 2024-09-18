@@ -6,5 +6,6 @@
     google-chrome
 
     telegram-desktop
+    nekoray
   ];
 }
