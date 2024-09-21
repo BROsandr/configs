@@ -7,5 +7,6 @@
 
     telegram-desktop
     nekoray
+    pavucontrol
   ];
 }
