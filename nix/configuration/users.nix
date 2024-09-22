@@ -4,7 +4,7 @@
   users.users.alex = {
     isNormalUser = true;
     home = "/home/alex";
-    extraGroups = [ "wheel" "audio"  ];
+    extraGroups = [ "wheel" "audio" "docker" ];
     hashedPasswordFile = "/etc/nixos/alex.passwd";
   };
 }

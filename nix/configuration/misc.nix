@@ -16,4 +16,12 @@
   security.pam.services.login.enableKwallet = true;
 
   security.polkit.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 }
