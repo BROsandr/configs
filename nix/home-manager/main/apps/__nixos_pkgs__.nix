@@ -8,5 +8,6 @@
     telegram-desktop
     nekoray
     pavucontrol
+    wl-clipboard
   ];
 }
