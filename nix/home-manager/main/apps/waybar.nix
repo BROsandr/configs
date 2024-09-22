@@ -132,10 +132,10 @@
             # // interface = "wlp2*", // (Optional) To force the use of this interface
             format-wifi = "{essid} ({signalStrength}%) ";
             format-ethernet = "{ipaddr}/{cidr} ";
-            tooltip-format = "{ifname} via {gwaddr} ";
+            tooltip-format = "{ifname} via {gwaddr}  \n\t⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
             format-linked = "{ifname} (No IP) ";
             format-disconnected = "Disconnected ⚠";
-            format-alt = "{ifname}: {ipaddr}/{cidr} ⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+            format-alt = "{ifname}: {ipaddr}/{cidr}";
         };
         pulseaudio = {
             # // scroll-step = 1, // %, can be a float
