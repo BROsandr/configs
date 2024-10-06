@@ -9,5 +9,7 @@
     nekoray
     pavucontrol
     wl-clipboard
+
+    okular
   ];
 }
