@@ -32,6 +32,7 @@
     '';
 
     shellAliases.nix-shell = "nix-shell --run fish";
+    shellAliases.drun = "docker run -it --network=host --device=/dev/kfd --device=/dev/dri --group-add=video --ipc=host --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --shm-size 8G -v $HOME/dockerx:/dockerx -w /dockerx";
     shellAbbrs.suspend = "systemctl suspend";
   };
 }
