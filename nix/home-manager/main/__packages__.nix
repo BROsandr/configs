@@ -14,5 +14,6 @@ in {
     wget
     wordEnv
     niv
+    btop
   ];
 }
